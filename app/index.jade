@@ -11,7 +11,7 @@ html(ng-app='npmalerts')
         // build:css(.tmp) styles/main.css
         link(rel='stylesheet', href='/bower_components/bootstrap/dist/css/bootstrap.min.css')
         link(rel='stylesheet', href='/bower_components/bootstrap/dist/css/bootstrap-theme.min.css')
-        link(rel='stylesheet', href='/bower_components/bootstrap/dist/css/font-awesome.min.css')
+        link(rel='stylesheet', href='/bower_components/font-awesome/css/font-awesome.min.css')
         link(rel='stylesheet', href='/styles/main.css')
         // endbuild
 
@@ -39,6 +39,6 @@ html(ng-app='npmalerts')
         // endbuild
 
         // build:js({.tmp,app}) scripts/scripts.js
-        script(src='/home/index.js')
-        script(src='/subscription.js')
+        script(src='/scripts/controllers/main.js')
+        script(src='/scripts/services/subscription.js')
         // endbuild

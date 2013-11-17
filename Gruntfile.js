@@ -216,7 +216,9 @@ module.exports = function (grunt) {
 						'.htaccess',
 						'bower_components/**/*',
 						'images/{,*/}*.{gif,webp}',
-						'fonts/*'
+						'fonts/**/*',
+						'scripts/**/*',
+						'styles/**/*'
 					]
 				}, {
 					expand: true,
@@ -329,8 +331,8 @@ module.exports = function (grunt) {
 		'ngmin',
 		'copy:dist',
 		'cdnify',
-		'uglify',
-		'rev'
+		'uglify'
+//		'rev'
 //		'usemin'
 	]);
 
