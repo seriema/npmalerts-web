@@ -1,4 +1,4 @@
-angular.module('npmalerts', ['ui.bootstrap'])
+angular.module('npmalerts')
 	.controller('SignUpCtrl', ['$scope', '$http', '$location', 'Subscription', function ($scope, $http, $location, subscription) {
 		$scope.alerts = [];
 

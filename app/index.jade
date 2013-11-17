@@ -22,7 +22,8 @@ html(ng-app='npmalerts')
             //if lt IE 7
                 p.browsehappy
                     You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.
-        div.container(ng-view='')
+        div.container
+            include views/main
 
         div.container
             footer.footer
@@ -39,6 +40,7 @@ html(ng-app='npmalerts')
         // endbuild
 
         // build:js({.tmp,app}) scripts/scripts.js
+        script(src='/scripts/app.js')
         script(src='/scripts/controllers/main.js')
         script(src='/scripts/services/subscription.js')
         // endbuild
