@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html ng-app="npmalerts">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>npm alerts - letting you know when there's a new version of your npm packages</title>
+    <link type="text/plain" rel="author" href="/humans.txt">
+    <!-- build:css(.tmp) styles/main.css-->
+    <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="/bower_components/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/styles/main.css">
+    <!-- endbuild--></head>
+<body><a href="https://github.com/seriema/npmalerts"><img style="position: absolute; top: 0; right: 0; border: 0;"
+                                                          src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png"
+                                                          alt="Fork me on GitHub"></a>
+
+<div class="container"><p>&nbsp;</p><!--[if lt IE 7]>
+    <p class="browsehappy">
+        <You>are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your
+            browser</a> to improve your experience.
+        </You>
+    </p><![endif]--></div>
+<div class="container">
+    <div ng-controller="SignUpCtrl" class="jumbotron"><h1>npm alerts</h1>
+
+        <p class="lead">Start observing your GitHub repository and get an email whenever a new node.js package is
+            available.</p>
+
+        <form role="form" ng-submit="submit()" class="form-inline">
+            <div class="form-group"><label for="email" class="sr-only">Email address</label><input id="email"
+                                                                                                   type="email"
+                                                                                                   placeholder="Enter email"
+                                                                                                   ng-model="email"
+                                                                                                   required
+                                                                                                   class="form-control">
+            </div>
+            <div class="form-group"><label for="url" class="sr-only">GitHub URL</label><input id="url" type="url"
+                                                                                              placeholder="Github URL"
+                                                                                              ng-model="url" required
+                                                                                              class="form-control">
+            </div>
+            <button type="submit" ng-show="isAdding" class="btn btn-primary">Watch</button>
+            <button type="submit" ng-hide="isAdding" class="btn btn-danger">Unwatch</button>
+            <br>
+
+            <div ng-show="isAdding" class="checkbox"><label><input type="checkbox" ng-model="ignorePatches">
+                <small>&nbsp; Ignore patches (<a href="http://semver.org/">?</a></small>
+                )</label></div>
+        </form>
+        <p ng-show="isAdding"><a ng-click="showUnwatch()">Already watching a repo and want to cancel?</a></p>
+
+        <p ng-hide="isAdding"><a ng-click="showWatch()">Want to watch a repo instead?</a></p>
+        <alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)">{{alert.msg}}</alert>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="alert alert-info"><strong>Alpha!</strong>
+
+                <p>Help me test out this service! Let me know what you think on <a href="http://twitter.com/seriemajp">Twitter</a>!
+                </p></div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4"><h2><i class="icon-beer"></i> Free</h2>
+
+            <p>The service is completely free and your email will only be used to send notifications about updates to
+                packages you use.</p></div>
+        <div class="col-md-4"><h2><i class="icon-envelope-alt"></i> Notification</h2>
+
+            <p>Sign up above and you'll get an email when a Node package defined in your package.json has a new
+                release.</p></div>
+        <div class="col-md-4"><h2><i class="icon-check"></i> All versions</h2>
+
+            <p>Semver version ranges are checked, but you'll get notified either way in case you want to upgrade your
+                package.json.</p></div>
+    </div>
+    <div class="row">
+        <div class="col-md-12"><h2>About</h2>
+
+            <p>This page was created by a developer tired of checking for new versions of node packages (especially when
+                using <a href="http://gruntjs.com/">GruntJS</a>). Services he found either required manual checks or
+                tried to charge for it.</p>
+
+            <p>The service is free because usage is within the free account on <a href="http://heroku.com">Heroku</a>.
+                If this changes I might ask for donations or add ads to cover costs.</p>
+
+            <p>npm alerts is hosted on Heroku and uses the MEAN-stack (i.e. <a
+                    href="http://www.mongodb.org/">MongoDB</a>, <a href="http://expressjs.com/">ExpressJS</a>, <a
+                    href="http://angularjs.org/">AngularJS</a>, and <a href="http://nodejs.org/">NodeJS</a>). It also
+                uses <a href="http://getbootstrap.com/">Twitter Bootstrap</a> (actually <a
+                        href="http://angular-ui.github.io/bootstrap/">Angular Bootstrap</a>). If you're interested in
+                the code then feel free to check out the sourcecode at <a href="https://github.com/seriema/npmalerts">GitHub</a>.
+            </p></div>
+    </div>
+</div>
+<div class="container">
+    <footer class="footer">
+        <hr>
+        <p>Created by <a href="https://twitter.com/seriemajp">@seriemajp</a></p></footer>
+</div>
+<script src="/scripts/analytics.js"></script>
+<!-- build:js scripts/plugins.js-->
+<script src="/bower_components/angular/angular.min.js"></script>
+<script src="/bower_components/angular-bootstrap/ui-bootstrap.min.js"></script>
+<script src="/bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+<script src="/bower_components/lodash/dist/lodash.min.js"></script>
+<!-- endbuild--><!-- build:js({.tmp,app}) scripts/scripts.js-->
+<script src="/scripts/app.js"></script>
+<script src="/scripts/controllers/main.js"></script>
+<script src="/scripts/services/subscription.js"></script>
+<!-- endbuild--></body>
+</html>
