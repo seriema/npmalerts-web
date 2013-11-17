@@ -303,7 +303,7 @@ module.exports = function (grunt) {
 				},
 				files: {
 					'<%= yeoman.dist %>/index.html': ['<%= yeoman.app %>/index.jade'],
-					'<%= yeoman.dist %>/views/main.html': ['<%= yeoman.app %>/views/main.jade']
+					'<%= yeoman.dist %>/404.html': ['<%= yeoman.app %>/404.jade']
 				}
 			}
 		}
