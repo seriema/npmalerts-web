@@ -22,11 +22,13 @@ div.jumbotron(ng-controller='SignUpCtrl')
     p(ng-hide='isAdding')
         a(href='#', ng-click='showWatch()') Want to watch a repo instead?
     alert(ng-repeat='alert in alerts', type='alert.type', close='closeAlert($index)') {{alert.msg}}
+
 div.row
     div.col-md-12
         div.alert.alert-info
             strong Alpha!
             p Help me test out this service! Let me know what you think on <a href="http://twitter.com/seriemajp">Twitter</a>!
+
 div.row
     div.col-md-4
         h2 <i class="icon-beer"></i> Free
@@ -37,6 +39,7 @@ div.row
     div.col-md-4
         h2 <i class="icon-check"></i> All versions
         p Semver version ranges are checked, but you'll get notified either way in case you want to upgrade your package.json.
+
 div.row
     div.col-md-12
         h2 About
