@@ -6,7 +6,7 @@ angular.module('npmalerts')
 				var promise = $http.put('/api/subscriptions', data);
 
 				promise.success(function () {
-					ga('send', 'event', 'subscriptions', 'signup');
+					ga('send', 'event', 'subscriptions', 'signup', email);
 				});
 				promise.error(function () {
 					ga('send', 'exception', { 'exDescription': 'SignupError' });
@@ -18,7 +18,7 @@ angular.module('npmalerts')
 			remove: function (email, repo) {
 				var promise = $http.delete('/api/subscriptions?email=' + email + '&repo=' + repo);
 				promise.success(function () {
-					ga('send', 'event', 'subscriptions', 'remove');
+					ga('send', 'event', 'subscriptions', 'remove', email);
 				});
 				promise.error(function () {
 					ga('send', 'exception', { 'exDescription': 'RemoveSubscriptionError' });
