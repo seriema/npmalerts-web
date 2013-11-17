@@ -150,7 +150,6 @@ module.exports = function (grunt) {
 			}
 		},
 		useminPrepare: {
-			html: '<%= yeoman.dist %>/index.html',
 			html: '<%= yeoman.dist %>/{,*/}*.html',
 			options: {
 				dest: '<%= yeoman.dist %>'
@@ -324,15 +323,15 @@ module.exports = function (grunt) {
 	grunt.registerTask('build', [
 		'clean:dist',
 		'jade',
-		'useminPrepare',
+//		'useminPrepare',
 		'concurrent:dist',
 		'autoprefixer',
 		'ngmin',
 		'copy:dist',
 		'cdnify',
 		'uglify',
-		'rev',
-		'usemin'
+		'rev'
+//		'usemin'
 	]);
 
 	grunt.registerTask('default', [
