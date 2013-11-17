@@ -1,0 +1,15 @@
+# humanstxt.org/
+# The humans responsible & technology colophon
+
+# TEAM
+
+    John-Philip Johansson -- Creator and developer -- @seriemajp
+
+# THANKS
+
+    Peter deHaan -- pdehaan on Github
+
+# TECHNOLOGY COLOPHON
+
+    HTML5, CSS3, JavaScript
+    AngularJS, Bootstrap, Jade, MongoDB, Grunt, Bower
