@@ -306,6 +306,12 @@ module.exports = function (grunt) {
 					'<%= yeoman.dist %>/404.html': ['<%= yeoman.app %>/404.jade']
 				}
 			}
+		},
+		'gh-pages': {
+			options: {
+				base: 'dist'
+			},
+			src: ['**']
 		}
 	});
 
