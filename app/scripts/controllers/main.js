@@ -15,14 +15,6 @@ angular.module('npmalerts')
 			$scope.alerts.push({type: 'success', msg: msg });
 		};
 
-		$scope.showWatch = function() {
-			$scope.isAdding = true;
-		};
-
-		$scope.showUnwatch = function() {
-			$scope.isAdding = false;
-		};
-
 		$scope.closeAlert = function(index) {
 			$scope.alerts.splice(index, 1);
 		};
