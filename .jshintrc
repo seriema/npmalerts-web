@@ -13,6 +13,8 @@
 	"node": true,
 	"globals": {
 		"angular": false,
+		"module": false,
+		"require": false,
 		"ga": false,
 		"_": false
 	}
