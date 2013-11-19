@@ -82,9 +82,8 @@ module.exports = function (grunt) {
 				options: {
 					port: 9001,
 					base: [
-						'.tmp',
 						'test',
-						'<%= yeoman.app %>'
+						'<%= yeoman.dist %>'
 					]
 				}
 			},
@@ -105,7 +104,7 @@ module.exports = function (grunt) {
 					]
 				}]
 			},
-			server: '.tmp'
+			server: '<%= yeoman.tmp %>/*'
 		},
 		jshint: {
 			options: {
@@ -232,11 +231,8 @@ module.exports = function (grunt) {
 						'*.{ico,png,txt}',
 						'.htaccess',
 						'.nojekyll',
-//						'bower_components/**/*',
 						'images/{,*/}*.{gif,webp}',
-						'fonts/**/*',
-//						'scripts/**/*',
-//						'styles/**/*'
+						'fonts/**/*'
 					]
 				}, {
 					expand: true,
@@ -246,19 +242,39 @@ module.exports = function (grunt) {
 						'generated/*'
 					]
 				}]
+			},
+			html: {
+				expand: true,
+				cwd: '<%= yeoman.dist %>',
+				dest: '<%= yeoman.tmp %>/',
+				src: '**/*.html'
+			},
+			styles: {
+				files: [{
+					expand: true,
+					cwd: '<%= yeoman.app %>/styles',
+					dest: '<%= yeoman.tmp %>/styles/',
+					src: '**/*.css'
+				}, {
+					expand: true,
+					cwd: '<%= yeoman.app %>/bower_components',
+					dest: '<%= yeoman.tmp %>/bower_components/',
+					src: '**/*.css'
+				}]
+			},
+			scripts: {
+				files: [{
+					expand: true,
+					cwd: '<%= yeoman.app %>/scripts',
+					dest: '<%= yeoman.tmp %>/scripts/',
+					src: '**/*.js'
+				}, {
+					expand: true,
+					cwd: '<%= yeoman.app %>/bower_components',
+					dest: '<%= yeoman.tmp %>/bower_components/',
+					src: '**/*.js'
+				}]
 			}
-//			styles: {
-//				expand: true,
-//				cwd: '<%= yeoman.app %>/styles',
-//				dest: '.tmp/styles/',
-//				src: '{,*/}*.css'
-//			},
-//			scripts: {
-//				expand: true,
-//				cwd: '<%= yeoman.app %>/scripts',
-//				dest: '.tmp/scripts/',
-//				src: '**/*.js'
-//			}
 		},
 		concurrent: {
 			server: [
@@ -266,8 +282,8 @@ module.exports = function (grunt) {
 				'copy:styles'
 			],
 			test: [
-				'coffee',
-				'copy:styles'
+				'coffee'
+//				'copy:styles'
 			],
 			dist: [
 				'imagemin',
@@ -320,8 +336,8 @@ module.exports = function (grunt) {
 					}
 				},
 				files: {
-					'<%= yeoman.dist %>/index.html': ['<%= yeoman.app %>/index.jade'],
-					'<%= yeoman.dist %>/404.html': ['<%= yeoman.app %>/404.jade']
+					'<%= yeoman.tmp %>/index.html': ['<%= yeoman.app %>/index.jade'],
+					'<%= yeoman.tmp %>/404.html': ['<%= yeoman.app %>/404.jade']
 				}
 			}
 		},
@@ -335,7 +351,7 @@ module.exports = function (grunt) {
 
 	grunt.registerTask('server', function (target) {
 		if (target === 'dist') {
-			return grunt.task.run(['build', 'connect:dist:keepalive']);
+			return grunt.task.run(['dist', 'connect:dist:keepalive']);
 		}
 
 		grunt.task.run([
@@ -350,13 +366,16 @@ module.exports = function (grunt) {
 
 	grunt.registerTask('test', [
 		'clean:server',
-		'concurrent:test',
-		'autoprefixer',
+		'jade',
+		'copy:html',
+		'copy:scripts',
+		'copy:styles',
+//		'rev',
 		'connect:test',
 		'karma'
 	]);
 
-	grunt.registerTask('build', [
+	grunt.registerTask('dist', [
 		'clean:dist',
 		'jade',
 		'cdnify',
@@ -376,7 +395,7 @@ module.exports = function (grunt) {
 	grunt.registerTask('publish', [
 		'jshint',
 		'test',
-		'build',
+		'dist',
 		'gh-pages'
 	]);
 

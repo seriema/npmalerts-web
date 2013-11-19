@@ -11,10 +11,13 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-      'app/bower_components/angular/angular.js',
-      'app/bower_components/angular-mocks/angular-mocks.js',
-      'app/scripts/*.js',
-      'app/scripts/**/*.js',
+			'.tmp/bower_components/angular/angular.min.js',
+			'.tmp/bower_components/angular-bootstrap/ui-bootstrap.min.js',
+			'.tmp/bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js',
+			'.tmp/bower_components/lodash/dist/lodash.min.js',
+			'.tmp/scripts/app.js',
+			'.tmp/scripts/controllers/main.js',
+			'.tmp/scripts/services/subscription.js',
       'test/mock/**/*.js',
       'test/spec/**/*.js'
     ],
