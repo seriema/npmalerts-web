@@ -1,5 +1,5 @@
 angular.module('npmalerts')
-	.controller('SignUpCtrl', function ($scope, $http, $location, subscription) {
+	.controller('SignUpCtrl', function ($scope, $http, $location, Subscription) {
 		$scope.alerts = [];
 
 		$scope.email = ($location.search()).email;
@@ -37,7 +37,7 @@ angular.module('npmalerts')
 		};
 
 		$scope.submitWatch = function() {
-			subscription.add($scope.email, $scope.url, !!$scope.ignorePatches)
+			Subscription.add($scope.email, $scope.url, !!$scope.ignorePatches)
 				.success(function(){
 					$scope.url = '';
 					$scope.displaySuccess('Done! Now when there\'s a new package version available we\'ll let you know.');
@@ -50,7 +50,7 @@ angular.module('npmalerts')
 		};
 
 		$scope.submitUnwatch = function() {
-			subscription.remove($scope.email, $scope.url)
+			Subscription.remove($scope.email, $scope.url)
 				.success(function(){
 					$scope.url = '';
 					$scope.displaySuccess('Done! You won\'t receive any more notifications about that project.');
