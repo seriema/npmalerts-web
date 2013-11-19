@@ -99,7 +99,7 @@ module.exports = function (grunt) {
 				files: [{
 					dot: true,
 					src: [
-						'.tmp',
+						'<%= yeoman.tmp %>/*',
 						'<%= yeoman.dist %>/*',
 						'!<%= yeoman.dist %>/.git*'
 					]
@@ -114,7 +114,8 @@ module.exports = function (grunt) {
 			},
 			all: [
 				'Gruntfile.js',
-				'<%= yeoman.app %>/scripts/{,*/}*.js'
+				'<%= yeoman.app %>/scripts/{,*/}*.js',
+				'!<%= yeoman.app %>/scripts/analytics.js'
 			]
 		},
 		coffee: {
@@ -154,17 +155,10 @@ module.exports = function (grunt) {
 			}
 		},
 		useminPrepare: {
-			html: '<%= yeoman.dist %>/{,*/}*.html',
-			options: {
-				dest: '<%= yeoman.dist %>'
-			}
+			html: ['<%= yeoman.dist %>/**/*.html']
 		},
 		usemin: {
-			html: ['<%= yeoman.dist %>/{,*/}*.html'],
-			css: ['<%= yeoman.dist %>/styles/{,*/}*.css'],
-			options: {
-				assetsDirs: ['<%= yeoman.dist %>']
-			}
+			html: ['<%= yeoman.dist %>/**/*.html']
 		},
 		imagemin: {
 			dist: {
@@ -189,24 +183,43 @@ module.exports = function (grunt) {
 		htmlmin: {
 			dist: {
 				options: {
-					/*removeCommentsFromCDATA: true,
-					 // https://github.com/yeoman/grunt-usemin/issues/44
-					 //collapseWhitespace: true,
-					 collapseBooleanAttributes: true,
-					 removeAttributeQuotes: true,
-					 removeRedundantAttributes: true,
-					 useShortDoctype: true,
-					 removeEmptyAttributes: true,
-					 removeOptionalTags: true*/
+					removeCommentsFromCDATA: true,
+					// https://github.com/yeoman/grunt-usemin/issues/44
+					collapseWhitespace: true,
+					collapseBooleanAttributes: true,
+					removeAttributeQuotes: true,
+					removeRedundantAttributes: true,
+					useShortDoctype: true,
+					removeEmptyAttributes: true,
+					removeOptionalTags: true
 				},
 				files: [{
 					expand: true,
-					cwd: '<%= yeoman.app %>',
-					src: ['*.html', 'views/*.html'],
+					cwd: '<%= yeoman.dist %>',
+					src: '*.html',
 					dest: '<%= yeoman.dist %>'
 				}]
 			}
 		},
+//		cssmin: {
+//			combine: {
+//				files: {
+//					'<%= yeoman.tmp %>/styles/styles.css': [
+//						'<%= yeoman.app %>/bower_components/bootstrap/dist/css/bootstrap.min.css',
+//						'<%= yeoman.app %>/bower_components/bootstrap/dist/css/bootstrap-theme.min.css',
+//						'<%= yeoman.app %>/bower_components/font-awesome/css/font-awesome.min.css',
+//						'<%= yeoman.app %>/styles/**/*.css'
+//					]
+//				}
+//			},
+//			minify: {
+//				expand: true,
+//				cwd: '<%= yeoman.tmp %>/styles/',
+//				src: ['*.css', '!*.min.css'],
+//				dest: '<%= yeoman.dist %>/styles/',
+//				ext: '.min.css'
+//			}
+//		},
 		// Put files not handled in other tasks here
 		copy: {
 			dist: {
@@ -219,11 +232,11 @@ module.exports = function (grunt) {
 						'*.{ico,png,txt}',
 						'.htaccess',
 						'.nojekyll',
-						'bower_components/**/*',
+//						'bower_components/**/*',
 						'images/{,*/}*.{gif,webp}',
 						'fonts/**/*',
-						'scripts/**/*',
-						'styles/**/*'
+//						'scripts/**/*',
+//						'styles/**/*'
 					]
 				}, {
 					expand: true,
@@ -233,19 +246,19 @@ module.exports = function (grunt) {
 						'generated/*'
 					]
 				}]
-			},
-			styles: {
-				expand: true,
-				cwd: '<%= yeoman.app %>/styles',
-				dest: '.tmp/styles/',
-				src: '{,*/}*.css'
-			},
-			scripts: {
-				expand: true,
-				cwd: '<%= yeoman.app %>/scripts',
-				dest: '.tmp/scripts/',
-				src: '**/*.js'
 			}
+//			styles: {
+//				expand: true,
+//				cwd: '<%= yeoman.app %>/styles',
+//				dest: '.tmp/styles/',
+//				src: '{,*/}*.css'
+//			},
+//			scripts: {
+//				expand: true,
+//				cwd: '<%= yeoman.app %>/scripts',
+//				dest: '.tmp/scripts/',
+//				src: '**/*.js'
+//			}
 		},
 		concurrent: {
 			server: [
@@ -257,11 +270,8 @@ module.exports = function (grunt) {
 				'copy:styles'
 			],
 			dist: [
-				'coffee',
-				'copy:styles',
 				'imagemin',
-				'svgmin',
-				'htmlmin'
+				'svgmin'
 			]
 		},
 		karma: {
@@ -279,26 +289,33 @@ module.exports = function (grunt) {
 			dist: {
 				files: [{
 					expand: true,
-					cwd: '.tmp/concat/scripts',
-					src: '*.js',
-					dest: '.tmp/concat/scripts'
+					cwd: '<%= yeoman.app %>/scripts',
+					src: '**/*.js',
+					dest: '<%= yeoman.tmp %>/scripts'
 				}]
 			}
 		},
-		uglify: {
-			dist: {
-				files: {
-					'<%= yeoman.dist %>/scripts/scripts.js': [
-						'<%= yeoman.dist %>/scripts/scripts.js'
-					]
-				}
-			}
-		},
+//		uglify: {
+//			dist: {
+//				files: {
+//					'<%= yeoman.dist %>/scripts/scripts.min.js': [
+//						'<%= yeoman.tmp %>/scripts/**/*.js'
+//					],
+//					'<%= yeoman.dist %>/scripts/plugins.min.js': [
+//						'<%= yeoman.app %>/bower_components/angular/angular.min.js',
+//						'<%= yeoman.app %>/bower_components/angular-bootstrap/ui-bootstrap.min.js',
+//						'<%= yeoman.app %>/bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js',
+//						'<%= yeoman.app %>/bower_components/lodash/dist/lodash.min.js'
+//					]
+//				}
+//			}
+//		},
 		jade: {
 			compile: {
 				options: {
+					pretty: true,
 					data: {
-						debug: false,
+						debug: true,
 						timestamp: '<%= grunt.template.today() %>'
 					}
 				},
@@ -312,7 +329,7 @@ module.exports = function (grunt) {
 			options: {
 				base: 'dist'
 			},
-			src: ['**', '.nojekyll']
+			src: ['**/*', '.nojekyll']
 		}
 	});
 
@@ -342,20 +359,29 @@ module.exports = function (grunt) {
 	grunt.registerTask('build', [
 		'clean:dist',
 		'jade',
-//		'useminPrepare',
+		'cdnify',
+		'useminPrepare',
 		'concurrent:dist',
 		'autoprefixer',
 		'ngmin',
+		'concat',
+		'uglify',
+		'cssmin',
 		'copy:dist',
-		'cdnify',
-		'uglify'
-//		'rev'
-//		'usemin'
+//		'rev',
+		'usemin',
+		'htmlmin'
+	]);
+
+	grunt.registerTask('publish', [
+		'jshint',
+		'test',
+		'build',
+		'gh-pages'
 	]);
 
 	grunt.registerTask('default', [
 		'jshint',
-		'test',
-		'build'
+		'test'
 	]);
 };
