@@ -1,5 +1,5 @@
 angular.module('npmalerts')
-	.controller('SignUpCtrl', ['$scope', '$http', '$location', 'Subscription', function ($scope, $http, $location, subscription) {
+	.controller('SignUpCtrl', function ($scope, $http, $location, subscription) {
 		$scope.alerts = [];
 
 		$scope.email = ($location.search()).email;
@@ -61,4 +61,4 @@ angular.module('npmalerts')
 					_.each(data.messages, $scope.displayAlert);
 				});
 		};
-	}]);
+	});

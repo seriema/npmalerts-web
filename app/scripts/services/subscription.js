@@ -1,5 +1,5 @@
 angular.module('npmalerts')
-	.service('Subscription', ['$http', function ($http) {
+	.service('Subscription', function ($http) {
 		return {
 			add: function (email, repo, ignorePatches) {
 				var data = { email: email, repo: repo, patch: !!ignorePatches };
@@ -27,4 +27,4 @@ angular.module('npmalerts')
 				return promise;
 			}
 		};
-	}]);
+	});
