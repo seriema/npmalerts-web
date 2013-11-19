@@ -245,8 +245,8 @@ module.exports = function (grunt) {
 			},
 			html: {
 				expand: true,
-				cwd: '<%= yeoman.dist %>',
-				dest: '<%= yeoman.tmp %>/',
+				cwd: '<%= yeoman.tmp %>',
+				dest: '<%= yeoman.dist %>/',
 				src: '**/*.html'
 			},
 			styles: {
@@ -378,6 +378,7 @@ module.exports = function (grunt) {
 	grunt.registerTask('dist', [
 		'clean:dist',
 		'jade',
+		'copy:html',
 		'cdnify',
 		'useminPrepare',
 		'concurrent:dist',
