@@ -1,6 +1,30 @@
 {
-  "name": "npmalertsweb",
-  "version": "0.0.0",
+  "name": "npmalerts-web",
+  "version": "0.3.0",
+  "description": "Get notified when npm modules are updated!",
+  "homepage": "http://npmalerts.com",
+  "bugs": {
+    "url": "https://github.com/seriema/npmalerts-web/issues"
+  },
+  "author": {
+    "name": "John-Philip Johansson",
+    "email": "seriema@gmail.com",
+    "url": "http://johansson.jp"
+  },
+  "contributors": [],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/seriema/npmalerts-web.git"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/seriema/npmalerts-web/blob/master/LICENSE"
+    }
+  ],
+  "engines": {
+    "node": "~0.10.21"
+  },
   "dependencies": {},
   "devDependencies": {
     "grunt": "~0.4.1",
@@ -31,5 +55,8 @@
   },
   "scripts": {
     "test": "grunt test"
-  }
+  },
+  "keywords": [
+    "npm"
+  ]
 }
