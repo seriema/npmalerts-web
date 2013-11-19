@@ -18,9 +18,9 @@ div.jumbotron(ng-controller='SignUpCtrl')
                     a(href='http://semver.org/') ?
                 | )
     p(ng-show='isAdding')
-        a(ng-click='showUnwatch()') Already watching a repo and want to cancel?
+        a(href='#', ng-click='showUnwatch()') Already watching a repo and want to cancel?
     p(ng-hide='isAdding')
-        a(ng-click='showWatch()') Want to watch a repo instead?
+        a(href='#', ng-click='showWatch()') Want to watch a repo instead?
     alert(ng-repeat='alert in alerts', type='alert.type', close='closeAlert($index)') {{alert.msg}}
 
 div.row
