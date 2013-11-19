@@ -16,7 +16,7 @@ div.jumbotron(ng-controller='SignUpCtrl')
                 input(type='checkbox', ng-model='ignorePatches')
                 small &nbsp; Ignore patches (
                     a(href='http://semver.org/') ?
-                | )
+                    | )
     p(ng-show='isAdding')
         a(href='#', ng-click='showUnwatch()') Already watching a repo and want to cancel?
     p(ng-hide='isAdding')
