@@ -16,7 +16,7 @@ module.exports = function(config) {
 			'.tmp/bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js',
 			'.tmp/bower_components/lodash/dist/lodash.min.js',
 			'.tmp/scripts/app.js',
-			'.tmp/scripts/controllers/main.js',
+			'.tmp/scripts/controllers/signup.js',
 			'.tmp/scripts/services/subscription.js',
       'test/mock/**/*.js',
       'test/spec/**/*.js'
