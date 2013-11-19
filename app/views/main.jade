@@ -1,6 +1,7 @@
 div.jumbotron(ng-controller='SignUpCtrl')
     h1 npm alerts
     p.lead Start observing your GitHub repository and get an email whenever a new node.js package is available.
+
     form.form-inline(role='form', ng-submit='submit()')
         div.form-group
             label.sr-only(for='email') Email address
@@ -10,13 +11,16 @@ div.jumbotron(ng-controller='SignUpCtrl')
             input.form-control#url(type='url', placeholder='Github URL', ng-model='url', required)
         button.btn.btn-primary(type='submit', ng-show='isAdding') Watch
         button.btn.btn-danger(type='submit', ng-hide='isAdding') Unwatch
+
         br
+
         div.checkbox(ng-show='isAdding')
             label
                 input(type='checkbox', ng-model='ignorePatches')
                 small &nbsp; Ignore patches (
                     a(href='http://semver.org/') ?
                     | )
+
     p(ng-show='isAdding')
         a(href='#', ng-click='showUnwatch()') Already watching a repo and want to cancel?
     p(ng-hide='isAdding')
