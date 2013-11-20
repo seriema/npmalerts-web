@@ -1,7 +1,11 @@
 .container {
-    max-width: 770px
+    max-width: 770px;
 }
 
 .form-group {
-    margin-right: 10px
+    margin-right: 10px;
+}
+
+.alert {
+    margin-top: 20px;
 }
