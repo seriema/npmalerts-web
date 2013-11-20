@@ -3,7 +3,7 @@ angular.module('npmalerts')
 		return {
 			add: function (email, repo, ignorePatches) {
 				var data = { email: email, repo: repo, patch: !!ignorePatches };
-				var promise = $http.put('/api/subscriptions', data);
+				var promise = $http.put('http://npmalerts.herokuapp.com/api/subscriptions', data);
 
 				promise.success(function () {
 					ga('send', 'event', 'subscriptions', 'signup', email);
@@ -16,7 +16,7 @@ angular.module('npmalerts')
 			},
 
 			remove: function (email, repo) {
-				var promise = $http.delete('/api/subscriptions?email=' + email + '&repo=' + repo);
+				var promise = $http.delete('http://npmalerts.herokuapp.com/api/subscriptions?email=' + email + '&repo=' + repo);
 				promise.success(function () {
 					ga('send', 'event', 'subscriptions', 'remove', email);
 				});
