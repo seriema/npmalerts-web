@@ -35,8 +35,6 @@ angular.module('npmalerts')
 					$scope.displaySuccess('Done! Now when there\'s a new package version available we\'ll let you know.');
 				})
 				.error(function(data) {
-					ga('send', 'exception', { 'exDescription': 'SignupError' });
-
 					_.each(data.messages, $scope.displayAlert);
 				});
 		};
@@ -48,8 +46,6 @@ angular.module('npmalerts')
 					$scope.displaySuccess('Done! You won\'t receive any more notifications about that project.');
 				})
 				.error(function(data) {
-					ga('send', 'exception', { 'exDescription': 'RemoveSubscriptionError' });
-
 					_.each(data.messages, $scope.displayAlert);
 				});
 		};
