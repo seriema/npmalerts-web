@@ -15,6 +15,8 @@ module.exports = function(config) {
 			'.tmp/bower_components/angular-bootstrap/ui-bootstrap.min.js',
 			'.tmp/bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js',
 			'.tmp/bower_components/lodash/dist/lodash.min.js',
+			'.tmp/bower_components/ladda-bootstrap/dist/spin.min.js',
+			'.tmp/bower_components/ladda-bootstrap/dist/ladda.min.js',
 			'.tmp/scripts/app.js',
 			'.tmp/scripts/controllers/signup.js',
 			'.tmp/scripts/services/subscription.js',
