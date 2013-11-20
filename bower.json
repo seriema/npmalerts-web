@@ -25,6 +25,7 @@
     "bootstrap": "~3.0.0",
     "angular": "~1.2.0",
     "lodash": "~2.3.0",
-    "font-awesome": "~4.0.3"
+    "font-awesome": "~4.0.3",
+    "ladda-bootstrap": "*"
   }
 }

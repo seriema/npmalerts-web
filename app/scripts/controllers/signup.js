@@ -36,6 +36,9 @@ angular.module('npmalerts')
 				})
 				.error(function(data) {
 					_.each(data.messages, $scope.displayAlert);
+				})
+				.finally(function() {
+					Ladda.stopAll();
 				});
 		};
 
@@ -47,6 +50,9 @@ angular.module('npmalerts')
 				})
 				.error(function(data) {
 					_.each(data.messages, $scope.displayAlert);
+				})
+				.finally(function() {
+					Ladda.stopAll();
 				});
 		};
 	});
