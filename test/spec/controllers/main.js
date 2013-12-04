@@ -6,7 +6,8 @@ describe('Controller: SignUpCtrl', function () {
   beforeEach(module('npmalerts'));
 
   var MainCtrl,
-    scope;
+    scope,
+		watchButton;
 
   // Initialize the controller and a mock scope
   beforeEach(inject(function ($controller, $rootScope) {
@@ -16,8 +17,9 @@ describe('Controller: SignUpCtrl', function () {
     });
   }));
 
-  it('should attach a list of awesomeThings to the scope', function () {
-		// expect(scope.awesomeThings.length).toBe(3);
-    expect(true).toBe(true);
-  });
+
+	it('fake test', function() {
+// expect(scope.awesomeThings.length).toBe(3);
+		expect(true).toBeTruthy();
+	});
 });

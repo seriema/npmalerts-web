@@ -11,7 +11,20 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-      'test/e2e/**/*.js'
+			'.tmp/bower_components/jquery/jquery.min.js',
+			'.tmp/bower_components/angular/angular.min.js',
+			'.tmp/bower_components/angular-mocks/angular-mocks.js',
+			'.tmp/bower_components/angular-scenario/angular-scenario.js',
+			'.tmp/bower_components/angular-scenario/jstd-scenario-adapter.js',
+			'.tmp/bower_components/angular-bootstrap/ui-bootstrap.min.js',
+			'.tmp/bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js',
+			'.tmp/bower_components/lodash/dist/lodash.min.js',
+			'.tmp/bower_components/ladda-bootstrap/dist/spin.min.js',
+			'.tmp/bower_components/ladda-bootstrap/dist/ladda.min.js',
+			'.tmp/scripts/app.js',
+			'.tmp/scripts/controllers/signup.js',
+			'.tmp/scripts/services/subscription.js',
+			'test/e2e/**/*.js'
     ],
 
     // list of files / patterns to exclude
@@ -42,7 +55,7 @@ module.exports = function(config) {
 
     // Continuous Integration mode
     // if true, it capture browsers, run tests and exit
-    singleRun: false
+    singleRun: false,
 
     // Uncomment the following lines if you are using grunt's server to run the tests
     // proxies: {
@@ -50,5 +63,11 @@ module.exports = function(config) {
     // },
     // URL root prevent conflicts with the site root
     // urlRoot: '_karma_'
+
+		plugins : [
+			'karma-chrome-launcher',
+			'karma-jasmine',
+			'karma-ng-scenario'
+		]
   });
 };

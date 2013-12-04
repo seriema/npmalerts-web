@@ -26,8 +26,10 @@
     "beforeEach": false,
     "browser": false,
     "describe": false,
+		"element": false,
     "expect": false,
     "inject": false,
+		"input": false,
     "it": false,
     "spyOn": false
   }

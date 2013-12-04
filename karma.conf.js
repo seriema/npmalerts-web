@@ -11,7 +11,9 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
+			'.tmp/bower_components/jquery/jquery.min.js',
 			'.tmp/bower_components/angular/angular.min.js',
+			'.tmp/bower_components/angular-mocks/angular-mocks.js',
 			'.tmp/bower_components/angular-bootstrap/ui-bootstrap.min.js',
 			'.tmp/bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js',
 			'.tmp/bower_components/lodash/dist/lodash.min.js',

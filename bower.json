@@ -27,5 +27,10 @@
     "lodash": "~2.3.0",
     "font-awesome": "~4.0.3",
     "ladda-bootstrap": "*"
+  },
+  "devDependencies": {
+    "angular-mocks": "~1.2.1",
+    "jquery": "~2.0.3",
+    "angular-scenario": "~1.2.1"
   }
 }
