@@ -243,11 +243,35 @@ module.exports = function (grunt) {
 					]
 				}]
 			},
+			server: {
+				files: [{
+					expand: true,
+					dot: true,
+					cwd: '<%= yeoman.app %>',
+					dest: '<%= yeoman.tmp %>',
+					src: [
+						'*.{ico,txt}',
+						'bower_components/**/*',
+						'scripts/**/*',
+						'styles/**/*',
+						'images/**/*',
+						'fonts/**/*'
+					]
+				}]
+			},
 			html: {
 				expand: true,
 				cwd: '<%= yeoman.tmp %>',
 				dest: '<%= yeoman.dist %>/',
 				src: '**/*.html'
+			},
+			images: {
+				files: [{
+					expand: true,
+					cwd: '<%= yeoman.app %>/images',
+					dest: '<%= yeoman.tmp %>/images/',
+					src: '**/*.{gif,jpg,jpeg,webp,svg}'
+				}]
 			},
 			styles: {
 				files: [{
@@ -279,7 +303,7 @@ module.exports = function (grunt) {
 		concurrent: {
 			server: [
 				'coffee:dist',
-				'copy:styles'
+				'copy:server'
 			],
 			test: [
 				'coffee'
@@ -293,6 +317,10 @@ module.exports = function (grunt) {
 		karma: {
 			unit: {
 				configFile: 'karma.conf.js',
+				singleRun: true
+			},
+			e2e: {
+				configFile: 'karma-e2e.conf.js',
 				singleRun: true
 			}
 		},
