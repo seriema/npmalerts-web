@@ -1,77 +1,85 @@
-div.row(ng-controller='SignUpCtrl')
-    div.col-md-12
-        h1 npm alerts
-        p.lead Start observing your GitHub repository and get an email whenever a new node.js package is available.
+div.jumbotron
+    div.container
+        div.row
+            div.col-sm-5
+                svg.logo(version='1.1', xmlns='http://www.w3.org/2000/svg', width='300px', height='300px', viewbox='0 0 300 300')
+                    circle.logo-image(cx='149.984', cy='150.483', r='82.473')
+                    path.logo-image(d='M55.032,103.192L36.334,93.86c10.38-20.796,26.271-38.359,45.956-50.789 c20.24-12.78,43.649-19.536,67.693-19.536c0.002,0,0,0,0.002,0c29.599,0,58.412,10.407,81.132,29.305l-13.363,16.066 c-18.975-15.783-43.042-24.475-67.769-24.475C109.505,44.432,73.122,66.947,55.032,103.192z')
+                    path.logo-image(d='M245.096,197.127l18.697,9.332c-10.379,20.796-26.271,38.359-45.955,50.789 c-20.24,12.78-43.649,19.536-67.693,19.536c-0.001,0,0,0-0.001,0c-29.599,0-58.412-10.407-81.132-29.305l13.363-16.066 c18.975,15.783,43.042,24.475,67.769,24.475C190.622,255.888,227.005,233.373,245.096,197.127z')
+
+            div.col-sm-7(ng-controller='SignUpCtrl')
+                h1
+                    strong npm 
+                    | alerts
+                p.lead Get notified when npm modules are updated!
+        
+                form(role='form', ng-submit='submit()', name='subscriptionForm')
+                    div.form-group
+                        label.sr-only(for='email') Email address
+                        input.form-control#email(type='email', placeholder='Enter email', ng-model='email', required)
+                    div.form-group
+                        label.sr-only(for='url') GitHub URL
+                        input.form-control#url(type='url', placeholder='Github URL', ng-model='url', required)
+                    div.form-group
+                        div.row
+                            div.col-sm-6
+                                div.checkbox(ng-show='isAdding')
+                                    label
+                                        input(type='checkbox', ng-model='ignorePatches')
+                                        span &nbsp; Ignore patches 
+                                    span (
+                                        a(href='#', popover-placement='right', popover='Versions follow this pattern: MAJOR.MINOR.PATCH') ?
+                                        | )
+                            div.col-sm-6.text-right
+                                button.btn.btn-primary.ladda-button(type='submit', ng-show='isAdding', data-style='expand-right', ng-disabled='!subscriptionForm.$valid') Watch
+                                button.btn.btn-danger.ladda-button(type='submit', ng-hide='isAdding', data-style='expand-right', ng-disabled='!subscriptionForm.$valid') Unwatch
+
+                alert(ng-repeat='alert in alerts', type='alert.type', close='closeAlert($index)') {{alert.msg}}
+
+                p(ng-show='isAdding')
+                    a(href='#', ng-click='isAdding=false') Already watching a repo and want to cancel?
+                p(ng-hide='isAdding')
+                    a(href='#', ng-click='isAdding=true') Want to watch a repo instead?
+
+div.container
+    div.row
+        div.col-md-4
+            h2
+                i.fa.fa-beer
+                |  Free
+            p The service is completely free and your email will only be used to send notifications about updates to packages you use.
+        div.col-md-4
+            h2
+                i.fa.fa-envelope-o
+                |  Notification
+            p Sign up above and you'll get an email when a Node package defined in your package.json has a new release.
+        div.col-md-4
+            h2
+                i.fa.fa-check
+                |  All versions
+            p Semver version ranges are checked, but you'll get notified either way in case you want to upgrade your package.json.
     
-        form.form-inline.well.well-lg(role='form', ng-submit='submit()', name='subscriptionForm')
-            p(ng-show='isAdding')
-                a(href='#', ng-click='isAdding=false') Already watching a repo and want to cancel?
-            p(ng-hide='isAdding')
-                a(href='#', ng-click='isAdding=true') Want to watch a repo instead?
-
-            div.form-group
-                label.sr-only(for='email') Email address
-                input.form-control#email(type='email', placeholder='Enter email', ng-model='email', required)
-            div.form-group
-                label.sr-only(for='url') GitHub URL
-                input.form-control#url(type='url', placeholder='Github URL', ng-model='url', required)    
-            div.form-group.checkbox(ng-show='isAdding')
-                label
-                    input(type='checkbox', ng-model='ignorePatches')
-                    span &nbsp; Ignore patches (
-                        a(href='http://semver.org/') ?
-                        | ) 
-            button.btn.btn-primary.ladda-button(type='submit', ng-show='isAdding', data-style='expand-right', ng-disabled='!subscriptionForm.$valid') Watch
-            button.btn.btn-danger.ladda-button(type='submit', ng-hide='isAdding', data-style='expand-right', ng-disabled='!subscriptionForm.$valid') Unwatch
-
-            alert(ng-repeat='alert in alerts', type='alert.type', close='closeAlert($index)') {{alert.msg}}
-
-div.row
-    div.col-md-12
-        div.alert.alert-info
-            strong Alpha!
-            p Help me test out this service! Let me know what you think on 
-                a(href='http://twitter.com/seriemajp') Twitter
-                | !
-
-div.row
-    div.col-md-4
-        h2
-            i.fa.fa-beer
-            |  Free
-        p The service is completely free and your email will only be used to send notifications about updates to packages you use.
-    div.col-md-4
-        h2
-            i.fa.fa-envelope-o
-            |  Notification
-        p Sign up above and you'll get an email when a Node package defined in your package.json has a new release.
-    div.col-md-4
-        h2
-            i.fa.fa-check
-            |  All versions
-        p Semver version ranges are checked, but you'll get notified either way in case you want to upgrade your package.json.
-
-div.row
-    div.col-md-12
-        h2 About
-        p This page was created by a developer tired of checking for new versions of node packages (especially when using 
-            a(href='http://gruntjs.com/') GruntJS
-            | ). Services he found either required manual checks or tried to charge for it.
-        p The service is free because usage is within the free account on 
-            a(href='http://heroku.com') Heroku
-            | . If this changes I might ask for donations or add ads to cover costs.
-        p npm alerts is hosted on Heroku and uses the MEAN-stack (i.e. 
-            a(href='http://www.mongodb.org/') MongoDB
-            | , 
-            a(href='http://expressjs.com/') ExpressJS
-            | , 
-            a(href='http://angularjs.org/') AngularJS
-            | , and 
-            a(href='http://nodejs.org/') NodeJS
-            | ). It also uses 
-            a(href='http://getbootstrap.com/') Twitter Bootstrap
-            |  (actually 
-            a(href='http://angular-ui.github.io/bootstrap/') Angular Bootstrap
-            | ). If you're interested in the code then feel free to check out the sourcecode at 
-            a(href='https://github.com/seriema/npmalerts') GitHub
-            | .
+    div.row
+        div.col-md-12
+            h2 About
+            p This page was created by a developer tired of checking for new versions of node packages (especially when using 
+                a(href='http://gruntjs.com/') GruntJS
+                | ). Services he found either required manual checks or tried to charge for it.
+            p The service is free because usage is within the free account on 
+                a(href='http://heroku.com') Heroku
+                | . If this changes I might ask for donations or add ads to cover costs.
+            p npm alerts is hosted on Heroku and uses the MEAN-stack (i.e. 
+                a(href='http://www.mongodb.org/') MongoDB
+                | , 
+                a(href='http://expressjs.com/') ExpressJS
+                | , 
+                a(href='http://angularjs.org/') AngularJS
+                | , and 
+                a(href='http://nodejs.org/') NodeJS
+                | ). It also uses 
+                a(href='http://getbootstrap.com/') Twitter Bootstrap
+                |  (actually 
+                a(href='http://angular-ui.github.io/bootstrap/') Angular Bootstrap
+                | ). If you're interested in the code then feel free to check out the sourcecode at 
+                a(href='https://github.com/seriema/npmalerts') GitHub
+                | .
