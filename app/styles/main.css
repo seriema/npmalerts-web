@@ -41,3 +41,7 @@
     fill: white;
     max-width: 100%;
 }
+
+.jumbotron .popover-content {
+    color: #333;
+}
