@@ -231,6 +231,7 @@ module.exports = function (grunt) {
 						'*.{ico,png,txt}',
 						'.htaccess',
 						'.nojekyll',
+						'CNAME',
 						'images/{,*/}*.{gif,webp}',
 						'fonts/**/*'
 					]
