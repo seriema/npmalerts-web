@@ -31,8 +31,8 @@ div.jumbotron
                                         a(href='#', popover-placement='bottom', popover='Semantic versioning: major.minor.patch') ?
                                         | )
                             div.col-sm-6.text-right
-                                button.btn.btn-primary.ladda-button(type='submit', ng-show='isAdding', data-style='expand-right', ng-disabled='!subscriptionForm.$valid') Watch
-                                button.btn.btn-danger.ladda-button(type='submit', ng-hide='isAdding', data-style='expand-right', ng-disabled='!subscriptionForm.$valid') Unwatch
+                                button.btn.btn-primary.ladda-button(type='submit', ng-show='isAdding', data-style='expand-right') Watch
+                                button.btn.btn-danger.ladda-button(type='submit', ng-hide='isAdding', data-style='expand-right') Unwatch
 
                 alert(ng-repeat='alert in alerts', type='alert.type', close='closeAlert($index)') {{alert.msg}}
 
