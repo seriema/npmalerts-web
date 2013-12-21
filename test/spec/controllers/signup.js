@@ -1,6 +1,8 @@
 'use strict';
 
 describe('Controller: SignUpCtrl', function () {
+	var MainCtrl,
+		scope;
 
   // load the controller's module
   beforeEach(module('npmalerts'));
@@ -36,8 +38,6 @@ describe('Controller: SignUpCtrl', function () {
 		});
 	});
 
-  var MainCtrl,
-    scope;
 
 
 	it('fake test', function() {
