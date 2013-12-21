@@ -38,12 +38,6 @@ describe('Controller: SignUpCtrl', function () {
 		});
 	});
 
-
-
-	it('fake test', function() {
-// expect(scope.awesomeThings.length).toBe(3);
-		expect(true).toBeTruthy();
-	});
 	
 	it('should default to empty email', function() {
 		expect(scope.email).toBeNull();
