@@ -401,7 +401,7 @@ module.exports = function (grunt) {
 		'copy:styles',
 //		'rev',
 		'connect:test',
-		'karma'
+		'karma:unit'
 	]);
 
 	grunt.registerTask('dist', [

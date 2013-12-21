@@ -2,8 +2,8 @@ angular.module('npmalerts')
 	.controller('SignUpCtrl', function ($scope, $http, $location, Subscription) {
 		$scope.alerts = [];
 
-		$scope.email = ($location.search()).email;
-		$scope.url = ($location.search()).repo;
+		$scope.email = ($location.search()).email || null;
+		$scope.url = ($location.search()).repo || null;
 
 		$scope.isAdding = !($scope.email && $scope.url);
 
