@@ -14,7 +14,7 @@ describe('Service: Subscription', function () {
 	
 	beforeEach(inject(function ($injector) {
 		$httpBackend = $injector.get('$httpBackend');
-		$httpBackend.when('PUT', 'http://npmalerts.herokuapp.com/api/subscriptions').respond({success: true});
+		$httpBackend.when('PUT', 'http://npmalerts.herokuapp.com/api/subscriptions', { email: 'seriema@gmail.com', repo: 'http://github.com/seriema/npmalerts-web', patch: true }).respond({success: true});
 		$httpBackend.when('DELETE', 'http://npmalerts.herokuapp.com/api/subscriptions?email=seriema@gmail.com&repo=http://github.com/seriema/npmalerts-web').respond({success: true});
 	}));
 	
