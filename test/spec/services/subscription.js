@@ -3,6 +3,17 @@
 describe('Service: Subscription', function () {
 
 	var MainSrvc, $httpBackend;
+	
+	var data = {
+		email: 'seriema@gmail.com',
+		repo: 'http://github.com/seriema/npmalerts-web',
+		patch: true
+	};
+
+	var api = {
+		put: 'http://npmalerts.herokuapp.com/api/subscriptions',
+		del: 'http://npmalerts.herokuapp.com/api/subscriptions?email='+data.email+'&repo='+data.repo
+	};
 
 	// load the controller's module
 	beforeEach(module('npmalerts'));
@@ -14,8 +25,8 @@ describe('Service: Subscription', function () {
 	
 	beforeEach(inject(function ($injector) {
 		$httpBackend = $injector.get('$httpBackend');
-		$httpBackend.when('PUT', 'http://npmalerts.herokuapp.com/api/subscriptions', { email: 'seriema@gmail.com', repo: 'http://github.com/seriema/npmalerts-web', patch: true }).respond({success: true});
-		$httpBackend.when('DELETE', 'http://npmalerts.herokuapp.com/api/subscriptions?email=seriema@gmail.com&repo=http://github.com/seriema/npmalerts-web').respond({success: true});
+		$httpBackend.when('PUT', api.put, { email: data.email, repo: data.repo, patch: data.patch }).respond({success: true});
+		$httpBackend.when('DELETE', api.del).respond({success: true});
 	}));
 	
 	beforeEach(function () {
@@ -29,17 +40,17 @@ describe('Service: Subscription', function () {
 
 
 	it('adds a subscriber', function() {
-		$httpBackend.expectPUT('http://npmalerts.herokuapp.com/api/subscriptions');
+		$httpBackend.expectPUT(api.put);
 		
-		MainSrvc.add('seriema@gmail.com', 'http://github.com/seriema/npmalerts-web', true);
+		MainSrvc.add(data.email, data.repo, data.patch);
 		
 		$httpBackend.flush();
 	});
 
 	it('removes a subscriber', function() {
-		$httpBackend.expectDELETE('http://npmalerts.herokuapp.com/api/subscriptions?email=seriema@gmail.com&repo=http://github.com/seriema/npmalerts-web');
+		$httpBackend.expectDELETE(api.del);
 
-		MainSrvc.remove('seriema@gmail.com', 'http://github.com/seriema/npmalerts-web');
+		MainSrvc.remove(data.email, data.repo);
 
 		$httpBackend.flush();
 	});
