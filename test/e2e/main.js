@@ -8,8 +8,8 @@ describe('Sign up page', function () {
 		watchButton = element('.btn-primary');
 	});
 
-	it('should have Watch/Unwatch disabled by default', function() {
-		expect(watchButton.attr('disabled')).toBeTruthy();
+	it('should have Watch enabled by default', function() {
+		expect(watchButton.attr('disabled')).toBeFalsy();
 	});
 
 	it('should enable Watch/Unwatch button', function() {
