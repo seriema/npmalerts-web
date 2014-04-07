@@ -8,8 +8,8 @@ angular.module('npmalerts')
 				promise.success(function () {
 					ga('send', 'event', 'subscriptions', 'signup', email);
 				});
-				promise.error(function () {
-					ga('send', 'exception', { 'exDescription': 'SignupError' });
+				promise.error(function (error) {
+					ga('send', 'exception', { 'exDescription': 'SignupError: ' + error });
 				});
 
 				return promise;
@@ -20,8 +20,8 @@ angular.module('npmalerts')
 				promise.success(function () {
 					ga('send', 'event', 'subscriptions', 'remove', email);
 				});
-				promise.error(function () {
-					ga('send', 'exception', { 'exDescription': 'RemoveSubscriptionError' });
+				promise.error(function (error) {
+					ga('send', 'exception', { 'exDescription': 'RemoveSubscriptionError ' + error });
 				});
 
 				return promise;
