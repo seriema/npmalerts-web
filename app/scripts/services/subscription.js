@@ -21,7 +21,7 @@ angular.module('npmalerts')
 					ga('send', 'event', 'subscriptions', 'remove', email);
 				});
 				promise.error(function (error) {
-					ga('send', 'exception', { 'exDescription': 'RemoveSubscriptionError ' + error });
+					ga('send', 'exception', { 'exDescription': 'UnsubscribeError ' + error });
 				});
 
 				return promise;
