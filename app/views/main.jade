@@ -1,70 +1,70 @@
 div.jumbotron
-		div.container
-				div.row
-						div.col-sm-5
-								svg.logo(version='1.1', xmlns='http://www.w3.org/2000/svg', width='300px', height='300px', viewbox='0 0 300 300')
-										circle.logo-image(cx='149.984', cy='150.483', r='82.473')
-										path.logo-image(d='M55.032,103.192L36.334,93.86c10.38-20.796,26.271-38.359,45.956-50.789 c20.24-12.78,43.649-19.536,67.693-19.536c0.002,0,0,0,0.002,0c29.599,0,58.412,10.407,81.132,29.305l-13.363,16.066 c-18.975-15.783-43.042-24.475-67.769-24.475C109.505,44.432,73.122,66.947,55.032,103.192z')
-										path.logo-image(d='M245.096,197.127l18.697,9.332c-10.379,20.796-26.271,38.359-45.955,50.789 c-20.24,12.78-43.649,19.536-67.693,19.536c-0.001,0,0,0-0.001,0c-29.599,0-58.412-10.407-81.132-29.305l13.363-16.066 c18.975,15.783,43.042,24.475,67.769,24.475C190.622,255.888,227.005,233.373,245.096,197.127z')
+	div.container
+		div.row
+			div.col-sm-5
+				svg.logo(version='1.1', xmlns='http://www.w3.org/2000/svg', width='300px', height='300px', viewbox='0 0 300 300')
+					circle.logo-image(cx='149.984', cy='150.483', r='82.473')
+					path.logo-image(d='M55.032,103.192L36.334,93.86c10.38-20.796,26.271-38.359,45.956-50.789 c20.24-12.78,43.649-19.536,67.693-19.536c0.002,0,0,0,0.002,0c29.599,0,58.412,10.407,81.132,29.305l-13.363,16.066 c-18.975-15.783-43.042-24.475-67.769-24.475C109.505,44.432,73.122,66.947,55.032,103.192z')
+					path.logo-image(d='M245.096,197.127l18.697,9.332c-10.379,20.796-26.271,38.359-45.955,50.789 c-20.24,12.78-43.649,19.536-67.693,19.536c-0.001,0,0,0-0.001,0c-29.599,0-58.412-10.407-81.132-29.305l13.363-16.066 c18.975,15.783,43.042,24.475,67.769,24.475C190.622,255.888,227.005,233.373,245.096,197.127z')
 
-						div.col-sm-7(ng-controller='SignUpCtrl')
-								h1
-										strong npm
-										| alerts
-								p.lead Notifications on outdated dependencies!
+			div.col-sm-7(ng-controller='SignUpCtrl')
+				h1
+					strong npm
+					| alerts
+				p.lead Notifications on outdated dependencies!
 
-								form(role='form', ng-submit='submit()', name='subscriptionForm')
-										div.form-group
-												label.sr-only(for='email') Email address
-												input.form-control#email(type='email', placeholder='Your email', ng-model='email', required)
-										div.form-group
-												label.sr-only(for='url') GitHub URL
-												input.form-control#url(type='url', placeholder='Your Github URL', ng-model='url', required)
-										div.form-group
-												div.row
-														div.col-sm-6
-																div.checkbox(ng-show='isAdding')
-																		label
-																				input(type='checkbox', ng-model='ignorePatches')
-																				span &nbsp;Ignore patches
-																		span &nbsp;(
-																				a(href='#', popover-placement='bottom', popover='Semantic versioning: major.minor.patch') ?
-																				| )
-														div.col-sm-6.text-right
-																button.btn.btn-primary.ladda-button(type='submit', ng-show='isAdding', data-style='expand-right') Subscribe
-																button.btn.btn-danger.ladda-button(type='submit', ng-hide='isAdding', data-style='expand-right') Unsubscribe
+				form(role='form', ng-submit='submit()', name='subscriptionForm')
+					div.form-group
+						label.sr-only(for='email') Email address
+						input.form-control#email(type='email', placeholder='Your email', ng-model='email', required)
+					div.form-group
+						label.sr-only(for='url') GitHub URL
+						input.form-control#url(type='url', placeholder='Your Github URL', ng-model='url', required)
+					div.form-group
+						div.row
+							div.col-sm-6
+								div.checkbox(ng-show='isAdding')
+									label
+										input(type='checkbox', ng-model='ignorePatches')
+										span &nbsp;Ignore patches
+									span &nbsp;(
+										a(href='#', popover-placement='bottom', popover='Semantic versioning: major.minor.patch') ?
+										| )
+							div.col-sm-6.text-right
+								button.btn.btn-primary.ladda-button(type='submit', ng-show='isAdding', data-style='expand-right') Subscribe
+								button.btn.btn-danger.ladda-button(type='submit', ng-hide='isAdding', data-style='expand-right') Unsubscribe
 
-										div.form-group
-											p.text-right(ng-show='isAdding')
-												a(href='#', ng-click='isAdding=false') Already signed up and want to unsubscribe?
-											p.text-right(ng-hide='isAdding')
-												a(href='#', ng-click='isAdding=true') Want to subscribe instead?
+					div.form-group
+						p.text-right(ng-show='isAdding')
+							a(href='#', ng-click='isAdding=false') Already signed up and want to unsubscribe?
+						p.text-right(ng-hide='isAdding')
+							a(href='#', ng-click='isAdding=true') Want to subscribe instead?
 
-								alert(ng-repeat='alert in alerts', type='alert.type', close='closeAlert($index)') {{alert.msg}}
+				alert(ng-repeat='alert in alerts', type='alert.type', close='closeAlert($index)') {{alert.msg}}
 
 div.container
-		div.row
-				div.col-md-6
-						h2 The pitch
-						p If you have a JavaScript project with dependencies through npm then this is for you!
-						p Npm alerts checks your package.json file nightly to see if a dependency has become out of date and emails you if it has.
-						p That's it! Just sign up above to get started.
+	div.row
+		div.col-md-6
+			h2 The pitch
+			p If you have a JavaScript project with dependencies through npm then this is for you!
+			p Npm alerts checks your package.json file nightly to see if a dependency has become out of date and emails you if it has.
+			p That's it! Just sign up above to get started.
 
-				div.col-md-6
-						h2 About
-						p npm alerts is hosted on Heroku and uses the MEAN-stack (i.e.
-								a(href='http://www.mongodb.org/') MongoDB
-								| ,
-								a(href='http://expressjs.com/') ExpressJS
-								| ,
-								a(href='http://angularjs.org/') AngularJS
-								| , and
-								a(href='http://nodejs.org/') NodeJS
-								| ). It also uses
-								a(href='http://getbootstrap.com/') Twitter Bootstrap
-								| and
-								a(href='http://angular-ui.github.io/bootstrap/') Angular Bootstrap
-								| .
-							p If you're interested in helping come to
-								a(href='https://github.com/seriema/npmalerts') GitHub
-								| .
+		div.col-md-6
+			h2 About
+			p npm alerts is hosted on Heroku and uses the MEAN-stack (i.e.
+				a(href='http://www.mongodb.org/') MongoDB
+				| ,
+				a(href='http://expressjs.com/') ExpressJS
+				| ,
+				a(href='http://angularjs.org/') AngularJS
+				| , and
+				a(href='http://nodejs.org/') NodeJS
+				| ). It also uses
+				a(href='http://getbootstrap.com/') Twitter Bootstrap
+				| and
+				a(href='http://angular-ui.github.io/bootstrap/') Angular Bootstrap
+				| .
+			p If you're interested in helping come to
+				a(href='https://github.com/seriema/npmalerts') GitHub
+				| .
