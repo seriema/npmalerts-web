@@ -13,32 +13,37 @@ div.jumbotron
 					| alerts
 				p.lead Notifications on outdated dependencies!
 
-				form(role='form', ng-submit='submit()', name='subscriptionForm')
-					div.form-group
-						label.sr-only(for='email') Email address
-						input.form-control#email(type='email', placeholder='Your email', ng-model='email', required)
-					div.form-group
-						label.sr-only(for='url') GitHub URL
-						input.form-control#url(type='url', placeholder='Your Github URL', ng-model='url', required)
-					div.form-group
-						div.row
-							div.col-sm-6
-								div.checkbox(ng-show='isAdding')
-									label
-										input(type='checkbox', ng-model='ignorePatches')
-										span &nbsp;Ignore patches
-									span &nbsp;(
-										a(href='#', popover-placement='bottom', popover='Semantic versioning: major.minor.patch') ?
-										| )
-							div.col-sm-6.text-right
-								button.btn.btn-primary.ladda-button(type='submit', ng-show='isAdding', data-style='expand-right') Subscribe
-								button.btn.btn-danger.ladda-button(type='submit', ng-hide='isAdding', data-style='expand-right') Unsubscribe
+				div.alert.alert-danger(role='alert')
+					strong Sorry!
+					span &nbsp; Our mongodb host deprecated the free plan so npmalerts.com is down and will probably not come back up. If this makes you sad, <a href='mailto:seriema@gmail.com' style='color:#a00;'>let me know</a>.
 
-					div.form-group
-						p.text-right(ng-show='isAdding')
-							a(href='#', ng-click='isAdding=false') Already signed up and want to unsubscribe?
-						p.text-right(ng-hide='isAdding')
-							a(href='#', ng-click='isAdding=true') Want to subscribe instead?
+				form(role='form', ng-submit='submit()', name='subscriptionForm', style='display:none')
+					fieldset(disabled)
+						div.form-group
+							label.sr-only(for='email') Email address
+							input.form-control#email(type='email', placeholder='Your email', ng-model='email', required)
+						div.form-group
+							label.sr-only(for='url') GitHub URL
+							input.form-control#url(type='url', placeholder='Your Github URL', ng-model='url', required)
+						div.form-group
+							div.row
+								div.col-sm-6
+									div.checkbox(ng-show='isAdding')
+										label
+											input(type='checkbox', ng-model='ignorePatches')
+											span &nbsp;Ignore patches
+										span &nbsp;(
+											a(href='#', popover-placement='bottom', popover='Semantic versioning: major.minor.patch') ?
+											| )
+								div.col-sm-6.text-right
+									button.btn.btn-primary.ladda-button(type='submit', ng-show='isAdding', data-style='expand-right') Subscribe
+									button.btn.btn-danger.ladda-button(type='submit', ng-hide='isAdding', data-style='expand-right') Unsubscribe
+
+						div.form-group
+							p.text-right(ng-show='isAdding')
+								a(href='#', ng-click='isAdding=false') Already signed up and want to unsubscribe?
+							p.text-right(ng-hide='isAdding')
+								a(href='#', ng-click='isAdding=true') Want to subscribe instead?
 
 				alert(ng-repeat='alert in alerts', type='alert.type', close='closeAlert($index)') {{alert.msg}}
 
